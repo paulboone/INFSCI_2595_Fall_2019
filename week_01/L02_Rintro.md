@@ -612,7 +612,7 @@ my_df %>% tbl_df()
     ## 3     3 hello  0.333 FALSE
     ## 4     4 maybe  1     TRUE
 
-Notice that the `tibble` version of `my_df` outputs to the screen additional information than the standard `data.frame`. We can see the data type associated with each variable, and we are explicitely told the dimensions of the object.
+Notice that the `tibble` version of `my_df` outputs to the screen additional information than the standard `data.frame`. We can see the data type associated with each variable, and we are explicitly told the dimensions of the object.
 
 This change in printed display is especially useful when first exploring a large dataset. If you print a "base" `R` `data.frame` to the screen, all rows and columns are displayed (up to the display limit). With dozens and dozens of columns and thousands of rows, such an action is overkill and a little pointless. Sometimes I just want to "see" the first few rows of a dataset. `tibble`s correct this by displaying just the first 10 rows by default, and display only enough variables that easily fit to the screen. Such a difference is purely cosmetic, but I like it none the less.
 
@@ -654,7 +654,7 @@ my_df %>% tbl_df() %>% glimpse()
 
 ### dplyr
 
-`dplyr` provides the core `tidyverse` data manipulation, wrangling, and transformation capabilities. `dplyr` is based on a series of action verbs to explicitely state the operation we are performing. Understanding precisely what that means is easiest to see with an example. We had previously seen how to select columns from `my_df` with a `<column index>` and a `<column name>`. To perform the same operations with `dplyr` we will use the `select()` verb. Furthermore, `dplyr` allows what is referred to as "non-standard evaluation" of variables in that we do **not** have to put variable names within quotes within the call to `select()`. To see this in action, select `x_1` and `x_3`, from the `tibble` version of `my_df`:
+`dplyr` provides the core `tidyverse` data manipulation, wrangling, and transformation capabilities. `dplyr` is based on a series of action verbs to explicitly state the operation we are performing. Understanding precisely what that means is easiest to see with an example. We had previously seen how to select columns from `my_df` with a `<column index>` and a `<column name>`. To perform the same operations with `dplyr` we will use the `select()` verb. Furthermore, `dplyr` allows what is referred to as "non-standard evaluation" of variables in that we do **not** have to put variable names within quotes within the call to `select()`. To see this in action, select `x_1` and `x_3`, from the `tibble` version of `my_df`:
 
 ``` r
 my_df %>% 
@@ -886,7 +886,7 @@ iris %>%
 
 In the above figure, the newly added tick marks are black. **Why is that the case?** How would you set the tick marks to have the same color scheme as the histograms within each facet?
 
-It is important to note that by displaying the count as the y-axis aesthetic for histograms, it might be difficult to compare multiple histograms when the groups have vastly different number of observations. For example, the `"setosa"` species has a different number of observations based on whether `Sepal.Width` is above its median value. The same conclusion can be drawn based on the facet for the `"versicolor"` species. We can normalize the counts to remove the impact of the *sample size* and hopefully make the *distribution* comparisons more visually telling. We already discussed the "hidden" operation performed to create the histogram, but we can instruct `ggplot2` to perform additional operations or statistical transformations. In the latest versions of `ggplot2`, we can override the default count y-aesthetic by calling the `stat()` function. To normalize we will use `stat(density)`. If you are not famaliar with the density, that is ok. We will be discussing what that term means within this course!
+It is important to note that by displaying the count as the y-axis aesthetic for histograms, it might be difficult to compare multiple histograms when the groups have vastly different number of observations. For example, the `"setosa"` species has a different number of observations based on whether `Sepal.Width` is above its median value. The same conclusion can be drawn based on the facet for the `"versicolor"` species. We can normalize the counts to remove the impact of the *sample size* and hopefully make the *distribution* comparisons more visually telling. We already discussed the "hidden" operation performed to create the histogram, but we can instruct `ggplot2` to perform additional operations or statistical transformations. In the latest versions of `ggplot2`, we can override the default count y-aesthetic by calling the `stat()` function. To normalize we will use `stat(density)`. If you are not familiar with the density, that is ok. We will be discussing what that term means within this course!
 
 In the code chunk below, we set the y-axis aesthetic within the `geom_freqpoly()` call to be the statistical transformation `stat(density)`. As shown in the resulting figure, the separate histograms within each facet are now of similar max height. Plotting the density for the `"setosa"` species instead of the count really makes the "spike" like behavior stand out for the histogram corresponding to `Sepal.Width` below its median.
 
@@ -918,7 +918,7 @@ iris %>%
 
 ![](L02_Rintro_files/figure-markdown_github/show_ggplot_10-1.png)
 
-Another comsmetic adjustment is that I usually turn off the y-axis text when I am displaying histograms across separate facets. I do this to save space within the plot window. The y-axis text is controlled by the `axis.text.y` argument within the `theme()` function. To turn the text off we will use the `element_blank()` function, as shown in the code chunk below.
+Another cosmetic adjustment is that I usually turn off the y-axis text when I am displaying histograms across separate facets. I do this to save space within the plot window. The y-axis text is controlled by the `axis.text.y` argument within the `theme()` function. To turn the text off we will use the `element_blank()` function, as shown in the code chunk below.
 
 ``` r
 iris %>% 
